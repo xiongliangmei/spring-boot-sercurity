@@ -31,4 +31,6 @@
     <root level="INFO">
         <appender-ref ref="console" />
     </root>
+    <!-- 输出Mybatis sql日志 -->
+    <logger name="com.xl.mapper" level="DEBUG"/>
 </configuration>
