@@ -1,14 +1,15 @@
 package com.xl.mapper;
 
-import com.xl.model.User;
+import com.xl.model.SysUser;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
-
-import java.util.List;
 
 @Mapper
 public interface UserMapper {
 
-    @Select("SELECT * FROM user")
-    List<User> getUserList();
+    @Select("SELECT * FROM sys_user WHERE id = #{id}")
+    SysUser selectById(Integer id);
+
+    @Select("SELECT * FROM sys_user WHERE name = #{name}")
+    SysUser selectByName(String name);
 }
