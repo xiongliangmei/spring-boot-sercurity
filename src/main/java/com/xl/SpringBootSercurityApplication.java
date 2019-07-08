@@ -3,6 +3,11 @@ package com.xl;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.ServletRegistrationBean;
+import org.springframework.context.annotation.Bean;
+
+import javax.servlet.Servlet;
+import javax.servlet.ServletRegistration;
 
 @SpringBootApplication
 @MapperScan("com/xl/mapper/**")
@@ -10,6 +15,13 @@ public class SpringBootSercurityApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(SpringBootSercurityApplication.class, args);
+    }
+
+    @Bean
+    public ServletRegistrationBean indexServletRegistration(){
+      ServletRegistrationBean registration = new ServletRegistrationBean();
+      registration.addUrlMappings("/getVerifyCode");
+      return registration;
     }
 
 }
