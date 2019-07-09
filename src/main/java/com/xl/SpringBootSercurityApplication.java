@@ -1,5 +1,6 @@
 package com.xl;
 
+import com.xl.controller.VerifyServlet;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,11 +18,13 @@ public class SpringBootSercurityApplication {
         SpringApplication.run(SpringBootSercurityApplication.class, args);
     }
 
+    /**
+     * 注入验证码servlet
+     */
     @Bean
-    public ServletRegistrationBean indexServletRegistration(){
-      ServletRegistrationBean registration = new ServletRegistrationBean();
-      registration.addUrlMappings("/getVerifyCode");
-      return registration;
+    public ServletRegistrationBean indexServletRegistration() {
+        ServletRegistrationBean registration = new ServletRegistrationBean(new VerifyServlet());
+        registration.addUrlMappings("/getVerifyCode");
+        return registration;
     }
-
 }
