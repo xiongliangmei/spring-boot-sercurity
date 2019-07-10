@@ -9,4 +9,7 @@ public interface SysRoleMapper {
 
     @Select("SELECT * FROM sys_role WHERE id = #{id}")
     SysRole selectById(Integer id);
+
+    @Select("SELECT * FROM sys_role WHERE name = #{name}")
+    Integer selectByName(String userName);
 }

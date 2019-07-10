@@ -5,7 +5,7 @@ import com.xl.model.SysUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service
+@Service(value = "sysUserService")
 public class SysUserService {
 
     @Autowired

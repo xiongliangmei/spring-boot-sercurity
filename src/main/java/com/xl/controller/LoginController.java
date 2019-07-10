@@ -32,14 +32,16 @@ public class LoginController {
 
     @RequestMapping("/admin")
     @ResponseBody
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+  /*  @PreAuthorize("hasRole('ROLE_ADMIN')")*/
+    @PreAuthorize("hasPermission('/admin','r')")
     public String printAdmin() {
         return "如果你看见这句话，说明你有ROLE_ADMIN角色";
     }
 
-    @RequestMapping("/user")
+    @RequestMapping("/admin/c")
     @ResponseBody
-    @PreAuthorize("hasRole('ROLE_USER')")
+/*    @PreAuthorize("hasRole('ROLE_USER')")*/
+    @PreAuthorize("hasPermission('/admin','c')")
     public String printUser() {
         return "如果你看见这句话，说明你有ROLE_USER角色";
     }

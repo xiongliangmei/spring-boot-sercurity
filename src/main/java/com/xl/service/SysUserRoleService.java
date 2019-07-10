@@ -10,9 +10,9 @@ import java.util.List;
 @Service
 public class SysUserRoleService {
     @Autowired
-    private SysUserRoleMapper userRoleMapper;
+    private SysUserRoleMapper sysUserRoleMapper;
 
     public List<SysUserRole> listByUserId(Integer userId) {
-        return userRoleMapper.listByUserId(userId);
+        return sysUserRoleMapper.listByUserId(userId);
     }
 }

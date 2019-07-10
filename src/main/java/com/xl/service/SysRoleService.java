@@ -8,9 +8,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class SysRoleService {
     @Autowired
-    private SysRoleMapper roleMapper;
+    private SysRoleMapper sysRoleMapper;
 
     public SysRole selectById(Integer id){
-        return roleMapper.selectById(id);
+
+        return sysRoleMapper.selectById(id);
+    }
+
+    public  Integer selectByName(String name) {
+        return sysRoleMapper.selectByName(name);
     }
 }

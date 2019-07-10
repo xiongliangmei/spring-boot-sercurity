@@ -20,28 +20,28 @@ import java.util.List;
 public class CustomUserDetailsService implements UserDetailsService {
 
     @Autowired
-    private SysUserService userService;
+    private SysUserService sysUserService;
 
     @Autowired
-    private SysRoleService roleService;
+    private SysRoleService sysRoleService;
 
     @Autowired
-    private SysUserRoleService userRoleService;
+    private SysUserRoleService sysUserRoleService;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Collection<GrantedAuthority> authorities = new ArrayList<>();
 
         //从数据库中取出用户信息
-        SysUser user = userService.selectByName(username);
+        SysUser user = sysUserService.selectByName(username);
         //判断用户是否存在
         if (user == null){
             throw new UsernameNotFoundException("用户名不存在");
         }
         //添加权限
-        List<SysUserRole> userRoles = userRoleService.listByUserId(user.getId());
+        List<SysUserRole> userRoles = sysUserRoleService.listByUserId(user.getId());
         for (SysUserRole userRole:userRoles) {
-            SysRole role = roleService.selectById(userRole.getRoleId());
+            SysRole role = sysRoleService.selectById(userRole.getRoleId());
             authorities.add(new SimpleGrantedAuthority(role.getName()));
         }
         return new User(user.getName(),user.getPassword(),authorities);
